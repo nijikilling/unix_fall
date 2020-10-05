@@ -89,7 +89,8 @@ int main(int argc, char **argv) {
     
     FILE* inf = fopen(argv[1], "r");
     if (!inf) {
-        printf("File open error!");
+        printf("File open error!\n");
+	return 1;
     }
 
     data d;
