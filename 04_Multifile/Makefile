@@ -1,5 +1,6 @@
 GENERATES = prog prog-a prog-so README *.a *.so
 TRASH = *.o *~ o.* *.out
+.PHONY: all clean test test1 test2 test3 bins libs distclean
 %.o:    %.c
 	cc $< -c -fPIC -o $@
 
