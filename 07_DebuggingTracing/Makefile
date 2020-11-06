@@ -3,7 +3,7 @@
 all: lib.o test
 
 lib.o: lib.c
-	g++ -shared -o lib.o -fPIC lib.c
+	g++ -shared -o lib.o -fPIC lib.c -ldl
 
 test: test_one test_two
 

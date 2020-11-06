@@ -1,6 +1,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
+#include <dlfcn.h>
+
+typedef int (*unlink_args_t)(int, const char*, int);
 
 int unlinkat(int dir_fd, const char *pathname, int flags) {
     char buf[1024];
@@ -30,5 +33,5 @@ int unlinkat(int dir_fd, const char *pathname, int flags) {
         errno = EPERM;
         return -1;
     }
-    return unlink(pathname);
+    return ((unlink_args_t)dlsym(RTLD_NEXT, "unlinkat"))(dir_fd, pathname, flags);
 }
