@@ -1,0 +1,14 @@
+/// @mainpage
+# @PACKAGE_NAME@ v. @PACKAGE_VERSION@
+
+## Intro
+
+This is free and __unencumbered__ software released into the *public domain*.
+
+## Usage
+
+How to use all of this.
+
+## Source
+
+See sources in `main.c`
