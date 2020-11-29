@@ -29,7 +29,6 @@ int main() {
         
         char **p = spl;
         while (*p) {
-            printf("Got:%s %d\n", *p, (int)(g_hash_table_lookup(table, *p) + 1));
             g_hash_table_insert(table, *p, g_hash_table_lookup(table, *p) + 1);
             p++;
         }
