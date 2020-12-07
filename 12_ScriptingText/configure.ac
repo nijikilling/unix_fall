@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([08], [0.0], [nijikilling])
+AC_INIT([12_prog], [0.0], [nijikilling])
 AM_INIT_AUTOMAKE([foreign])
 LT_INIT([disable-static])
 AC_CONFIG_SRCDIR([src/buf.h])
@@ -36,11 +36,12 @@ AC_ARG_ENABLE([gcov],
 AM_CONDITIONAL([COND_GCOV],[test '!' "$enable_gcov" = no])
 AC_OUTPUT
 
-files=$(find . -name "*.[ch]")
+files=$(find . -name "*.[[ch]]")
+dt=$(date)
 for file in $files; do
-    echo "\n=== $file ==="
+    echo "=== $file ==="
     sed -n "1{/^\/\* COMMENT:: .*\*\//p;}" $file
     sed -i "1{/^\/\* COMMENT:: .*\*\//d;}" $file
-    sed -i "1s/^/\/\* COMMENT:: AC_PACKAGE_NAME, AC_PACKAGE_VERSION: `date`\*\/\n/" $file
+    sed -i "1s/^/\/\* COMMENT:: AC_PACKAGE_NAME, AC_PACKAGE_VERSION: $dt\*\/\n/" $file
 done
 
